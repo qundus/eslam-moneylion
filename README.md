@@ -3,6 +3,7 @@
 - base url host and port are `http://localhost:8080`.
 - database and user are `postgres` as it exists on all postgres base CLI programs and has access to
   all tables.
+- `src/rest_client` contains rest client manual tests.
 - initial tables' records are created under `configs` folder.
 - docs are accessed through `/api-docs`.
 - docs swagger-ui is set to the base url.

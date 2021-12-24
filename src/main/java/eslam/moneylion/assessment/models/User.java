@@ -54,15 +54,8 @@ public class User {
         this.features = features;
     }
 
+    @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        for(Feature f : this.getFeatures()) {
-            sb.append(f + ",");
-        }
-        return String.format(
-            "[user_model] email:%30.30s features:%30.30s", 
-            this.getEmail(),
-            sb.toString()
-        );
+        return "User [email=" + email + ", features=" + features + "]";
     }
 }
