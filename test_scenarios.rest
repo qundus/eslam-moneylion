@@ -1,0 +1,62 @@
+@baseurl = http://localhost:8080/api
+# removed token for easier demonstration
+# @authToken = 45564sdad
+
+# SCENARIOS -> does user have access to feature
+### wrong feature name and email
+GET {{baseurl}}/feature?email=sad&featureName=dd HTTP/1.1
+
+### correct feature name and request
+GET {{baseurl}}/feature?email=a@users.com&featureName=premium%20air HTTP/1.1
+
+### called after adding feature 'steal locks' to user 'a@users.com'
+GET {{baseurl}}/feature?email=a@users.com&featureName=steal%20locks HTTP/1.1
+
+# SCENARIOS -> add feature to user
+### empty request
+POST {{baseurl}}/feature
+Content-Type: application/json
+
+{
+    
+}
+
+### redundant request
+POST {{baseurl}}/feature
+Content-Type: application/json
+
+{
+    "featureName": "premium air",
+    "email": "a@users.com",
+    "enable": true
+}
+
+### wrong feature name
+POST {{baseurl}}/feature
+Content-Type: application/json
+
+{
+    "featureName": "i don't exist",
+    "email": "a@users.com",
+    "enable": true
+}
+
+### wrong email
+POST {{baseurl}}/feature
+Content-Type: application/json
+
+{
+    "featureName": "i don't exist",
+    "email": "a@users.com",
+    "enable": true
+}
+
+### correct request json
+POST {{baseurl}}/feature
+Content-Type: application/json
+
+{
+    "featureName": "steal locks",
+    "email": "a@users.com",
+    "enable": true
+}
